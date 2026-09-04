@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Unbounded, Instrument_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme";
+import { SettingsFab } from "@/components/settings-fab";
+import { LanguageProvider } from "@/components/language";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -31,7 +33,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" suppressHydrationWarning className={`${unbounded.variable} ${instrument.variable} ${spaceMono.variable} h-full`}>
       <ThemeProvider>
-        <body className="noise min-h-full flex flex-col font-sans antialiased">{children}</body>
+        <LanguageProvider>
+          <body className="noise min-h-full flex flex-col font-sans antialiased">
+            {children}
+            <SettingsFab />
+          </body>
+        </LanguageProvider>
       </ThemeProvider>
     </html>
   );

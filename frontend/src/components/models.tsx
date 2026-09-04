@@ -1,4 +1,7 @@
+"use client";
+
 import { Reveal } from "./reveal";
+import { useT } from "./language";
 
 const ROWS = [
   { id: "the-model-5", by: "Embed", tags: ["flagship", "reasoning"], ctx: "1M", lat: "34ms", ok: true },
@@ -12,18 +15,18 @@ const ROWS = [
 ];
 
 export function ModelLedger() {
+  const t = useT();
   return (
     <section id="models" className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="label text-brand">01 — catalog</p>
+          <p className="label text-brand">{t.ledger.label}</p>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight">
-            Pick a model.
+            {t.ledger.title}
           </h2>
         </div>
         <p className="max-w-sm text-[13.5px] leading-relaxed text-muted">
-          Stable IDs across every provider. Swap models without touching a line of code —
-          the response shape never changes.
+          {t.ledger.body}
         </p>
       </div>
 
@@ -31,10 +34,10 @@ export function ModelLedger() {
         <div className="mt-10 rounded-lg border border-line bg-card overflow-hidden">
           <div className="grid grid-cols-[2.6rem_1fr_auto_auto_auto] gap-4 px-5 py-3 border-b border-line font-mono text-[10.5px] uppercase tracking-wider text-muted md:grid-cols-[2.6rem_1.4fr_1.4fr_4.2rem_3.8rem]">
             <span>#</span>
-            <span>Model</span>
-            <span className="hidden md:block">Provider</span>
-            <span className="text-right">ctx</span>
-            <span className="text-right">status</span>
+            <span>{t.ledger.model}</span>
+            <span className="hidden md:block">{t.ledger.provider}</span>
+            <span className="text-right">{t.ledger.ctx}</span>
+            <span className="text-right">{t.ledger.status}</span>
           </div>
           {ROWS.map((r, i) => (
             <div
@@ -55,21 +58,21 @@ export function ModelLedger() {
                 {r.ok ? (
                   <span className="inline-flex items-center gap-1.5 font-mono text-[11.5px] text-dotok">
                     <span className="h-1.5 w-1.5 rounded-full bg-dotok" />
-                    <span className="hidden sm:inline">{r.lat}</span>
-                    <span className="sm:hidden">up</span>
+                      <span className="hidden sm:inline">{r.lat}</span>
+                      <span className="sm:hidden">{t.ledger.up}</span>
                   </span>
                 ) : (
                   <span className="inline-flex items-center gap-1.5 font-mono text-[11.5px] text-muted/60">
                     <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-                    warm
+                    {t.ledger.warm}
                   </span>
                 )}
               </span>
             </div>
           ))}
           <div className="px-5 py-3 flex items-center justify-between font-mono text-[11px] text-muted">
-            <span>2,400+ models total — some behind the paywall</span>
-            <span className="hidden sm:block">full ledger at /v1/models</span>
+            <span>{t.ledger.foot}</span>
+            <span className="hidden sm:block">{t.ledger.fullLedger}</span>
           </div>
         </div>
       </Reveal>

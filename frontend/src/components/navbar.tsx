@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "./theme";
+import { useI18n, useT } from "./language";
 
 export function Navbar() {
   const { theme, toggle } = useTheme();
+  const { locale, toggle: toggleLang } = useI18n();
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -32,13 +35,23 @@ export function Navbar() {
         </a>
 
         <div className="hidden md:flex items-center gap-7 text-[13px] text-muted">
-          <a href="#models" className="link-u hover:text-foreground">Models</a>
-          <a href="#usage" className="link-u hover:text-foreground">Usage</a>
-          <a href="#pricing" className="link-u hover:text-foreground">Pricing</a>
-          <a href="#faq" className="link-u hover:text-foreground">FAQ</a>
+          <a href="#models" className="link-u hover:text-foreground">{t.nav.models}</a>
+          <a href="#usage" className="link-u hover:text-foreground">{t.nav.usage}</a>
+          <a href="#pricing" className="link-u hover:text-foreground">{t.nav.pricing}</a>
+          <a href="#faq" className="link-u hover:text-foreground">{t.nav.faq}</a>
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={toggleLang}
+            className="h-8 flex items-center rounded-md border border-line bg-card px-2 font-mono text-[11px] font-semibold hover:border-brand/60 transition-colors"
+            aria-label="Toggle language"
+            title="EN / ID"
+          >
+            <span className={locale === "en" ? "text-brand" : "text-muted"}>EN</span>
+            <span className="text-muted/50 mx-1">/</span>
+            <span className={locale === "id" ? "text-brand" : "text-muted"}>ID</span>
+          </button>
           <button
             onClick={toggle}
             className="w-8 h-8 grid place-items-center rounded-md border border-line bg-card hover:border-brand/60 transition-colors"
@@ -50,7 +63,7 @@ export function Navbar() {
             href="#usage"
             className={`hidden sm:inline-flex items-center gap-1.5 rounded-md bg-brand text-white text-[13px] font-semibold hover:bg-brand-strong transition-all ${scrolled ? "px-3 h-7" : "px-3.5 h-8"}`}
           >
-            Get key
+            {t.nav.getKey}
           </a>
         </div>
       </nav>

@@ -1,24 +1,27 @@
-import { Reveal } from "./reveal";
+"use client";
 
-const QA = [
-  { q: "Is it actually [OI]-compatible?", a: "Yes. We speak the wire format, so the official SDKs, LangChain, LlamaIndex and anything else that speaks [OI] just work. You only change the base_url and the key." },
-  { q: "Why not just call the providers directly?", a: "You can. But that means five dashboards, five invoices, five sets of rate limits and five failure modes. We turn all of that into one key and one balance." },
-  { q: "What happens when a model is down?", a: "We route around it. If your target blips, we fail over to the next-best model so your request finishes instead of dying. You see the reroute in the response metadata." },
-  { q: "Are my prompts stored?", a: "No. We pass requests through and don't log prompt content by default. This is a proxy, not a training pipeline." },
-];
+import { Reveal } from "./reveal";
+import { useT } from "./language";
 
 export function FAQ() {
+  const tr = useT();
+  const QA = [
+    { q: tr.faq.q1, a: tr.faq.a1 },
+    { q: tr.faq.q2, a: tr.faq.a2 },
+    { q: tr.faq.q3, a: tr.faq.a3 },
+    { q: tr.faq.q4, a: tr.faq.a4 },
+  ];
   return (
     <section id="faq" className="mx-auto max-w-7xl px-6 lg:px-8 py-20 border-t border-line">
       <div className="grid gap-12 lg:grid-cols-[0.6fr_1fr] lg:items-start">
         <Reveal>
           <div className="lg:sticky lg:top-24">
-            <p className="label text-brand">04 — faq</p>
+            <p className="label text-brand">{tr.faq.label}</p>
             <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight">
-              Fair questions.
+              {tr.faq.title}
             </h2>
             <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              The stuff people usually ask before they trust us with their bill.
+              {tr.faq.body}
             </p>
           </div>
         </Reveal>

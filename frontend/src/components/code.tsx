@@ -1,28 +1,30 @@
-import { Reveal } from "./reveal";
+"use client";
 
-const FEATURES = [
-  { t: "Drop-in [OI]", d: "Point any SDK that speaks [OI] at our base URL. Rewrites as nothing." },
-  { t: "One balance", d: "Every model billed from a single prepaid wallet. One invoice, no per-vendor keys." },
-  { t: "Automatic failover", d: "If a provider blips, we reroute to the next-best model mid-request." },
-  { t: "Streaming native", d: "Server-sent events, tokens as they land, tool calls pass through." },
-];
+import { Reveal } from "./reveal";
+import { useT } from "./language";
 
 export function Usage() {
+  const t = useT();
+  const FEATURES = [
+    { t: t.usage.f1t, d: t.usage.f1d },
+    { t: t.usage.f2t, d: t.usage.f2d },
+    { t: t.usage.f3t, d: t.usage.f3d },
+    { t: t.usage.f4t, d: t.usage.f4d },
+  ];
   return (
     <section id="usage" className="relative border-t border-line py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
           <Reveal>
             <div>
-              <p className="label text-brand">02 — usage</p>
+              <p className="label text-brand">{t.usage.label}</p>
               <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight">
-                One line, then
+                {t.usage.title1}
                 <br />
-                you're shipping.
+                {t.usage.title2}
               </h2>
               <p className="mt-5 max-w-md text-[14px] leading-relaxed text-muted">
-                Ten seconds of setup buys you the whole catalog. No model-specific SDKs,
-                no provider hunting, no trial dashboards to babysit.
+                {t.usage.body}
               </p>
 
               <div className="mt-8 space-y-5">
@@ -68,7 +70,7 @@ print(chat.choices[0].message.content)`}</code>
               </pre>
               <div className="border-t border-line px-4 py-3">
                 <p className="font-mono text-[11px] text-muted">
-                  <span className="text-muted/60">$</span> 0.0042 charged · 64 tokens · 1.1s
+                  <span className="text-muted/60">$</span> 0.0042 {t.usage.charged} · 64 {t.usage.tokens} · 1.1s
                 </p>
               </div>
             </div>
