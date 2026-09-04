@@ -230,10 +230,57 @@ body {
   transform: translateY(-4px);
 } 
 
+/* auth + admin animations */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-7px); }
+  40%, 80% { transform: translateX(7px); }
+}
+.animate-shake {
+  animation: shake 0.45s ease-in-out both;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2.5px); }
+}
+.animate-bob {
+  animation: bob 2.6s ease-in-out infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translate(-26px, -26px); opacity: 0; }
+  25% { opacity: 0.7; }
+  50% { transform: translate(26px, 26px); opacity: 0.4; }
+  75% { opacity: 0.7; }
+  100% { transform: translate(-26px, -26px); opacity: 0; }
+}
+.animate-scanline {
+  animation: scanline 3.2s ease-in-out infinite;
+}
+
+@keyframes count-bar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.animate-count-bar {
+  transform-origin: left;
+  animation: count-bar 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .animate-marquee, .animate-blink,
   .orbit, .orbit-rev, .orbit-slow, .orbit-fast,
-  .pulse-dot, .beam, .ring-pulse, .dash-flow, .card-lift {
+  .pulse-dot, .beam, .ring-pulse, .dash-flow, .card-lift,
+  .animate-rise, .animate-shake, .animate-bob, .animate-scanline, .animate-count-bar {
     animation: none;
     transition: none;
   }

@@ -31,7 +31,7 @@ export function Pricing() {
   ];
   return (
     <section id="pricing" className="border-t border-line py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-8">
         <div className="max-w-xl">
           <p className="label text-brand">{tr.pricing.label}</p>
           <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight">

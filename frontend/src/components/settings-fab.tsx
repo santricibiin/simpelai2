@@ -1,11 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { ACCENTS, type Accent, useTheme } from "@/components/theme";
+import { setAdminLayout, useAdminLayout } from "@/hooks/use-admin-layout";
 
 export function SettingsFab() {
   const { accent, setAccent, theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
+  const layout = useAdminLayout();
+  const pathname = usePathname();
+  const isAdmin = pathname?.startsWith("/admin") ?? false;
+
+  const toggleLayout = () =>
+    setAdminLayout(layout === "vertical" ? "horizontal" : "vertical");
 
   return (
     <div className="fixed right-3 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end gap-2">
@@ -34,6 +42,32 @@ export function SettingsFab() {
           >
             {theme === "dark" ? "☀ Light" : "☾ Dark"}
           </button>
+          {isAdmin && (
+            <>
+              <span className="mt-1 font-mono text-[10px] uppercase tracking-widest text-muted">
+                Admin layout
+              </span>
+              <button
+                onClick={toggleLayout}
+                className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm text-foreground transition-colors hover:bg-brand-soft"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="size-4 text-brand">
+                  {layout === "vertical" ? (
+                    <>
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <line x1="9" y1="3" x2="9" y2="21" />
+                    </>
+                  ) : (
+                    <>
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <line x1="3" y1="9" x2="21" y2="9" />
+                    </>
+                  )}
+                </svg>
+                {layout === "vertical" ? "Vertical" : "Horizontal"}
+              </button>
+            </>
+          )}
         </div>
       )}
       <button

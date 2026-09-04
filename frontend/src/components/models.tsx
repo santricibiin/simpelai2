@@ -17,7 +17,7 @@ const ROWS = [
 export function ModelLedger() {
   const t = useT();
   return (
-    <section id="models" className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
+    <section id="models" className="mx-auto max-w-[1600px] px-6 lg:px-8 py-20">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="label text-brand">{t.ledger.label}</p>

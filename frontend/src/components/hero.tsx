@@ -7,7 +7,7 @@ export function Hero() {
   const t = useT();
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-20 pb-20 grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-8 pt-20 pb-20 grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
         <div>
           <p className="label text-brand">{t.hero.label}</p>
           <h1 className="mt-5 font-display text-[clamp(2.3rem,6vw,4.4rem)] font-bold leading-[1.04] tracking-tight">

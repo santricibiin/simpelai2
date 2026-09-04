@@ -12,7 +12,7 @@ export function FAQ() {
     { q: tr.faq.q4, a: tr.faq.a4 },
   ];
   return (
-    <section id="faq" className="mx-auto max-w-7xl px-6 lg:px-8 py-20 border-t border-line">
+    <section id="faq" className="mx-auto max-w-[1600px] px-6 lg:px-8 py-20 border-t border-line">
       <div className="grid gap-12 lg:grid-cols-[0.6fr_1fr] lg:items-start">
         <Reveal>
           <div className="lg:sticky lg:top-24">

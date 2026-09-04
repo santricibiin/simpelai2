@@ -25,7 +25,7 @@ export function Navbar() {
           : "bg-background/60 h-16"
       }`}
     >
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8 h-full flex items-center justify-between">
+      <nav className="mx-auto max-w-[1600px] px-6 lg:px-8 h-full flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 font-display text-[15px] font-semibold tracking-tight">
           <span className={`grid place-items-center rounded-md bg-brand text-white text-xs font-bold transition-all duration-300 ${scrolled ? "w-6 h-6" : "w-7 h-7"}`}>
             E

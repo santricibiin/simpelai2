@@ -13,7 +13,7 @@ export function Usage() {
   ];
   return (
     <section id="usage" className="relative border-t border-line py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
           <Reveal>
             <div>

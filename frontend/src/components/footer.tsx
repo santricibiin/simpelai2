@@ -16,7 +16,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-6 flex flex-wrap items-center gap-x-4 gap-y-3 justify-between">
+      <div className="mx-auto max-w-[1600px] px-6 lg:px-8 py-6 flex flex-wrap items-center gap-x-4 gap-y-3 justify-between">
         <div className="flex items-center gap-2">
           <span className="grid place-items-center w-6 h-6 rounded-md bg-brand text-white text-[10px] font-bold">E</span>
           <span className="font-display text-[13px] font-semibold">emberai</span>
